@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SHOPAPP</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @RenderSection("Css", false)
+
+
+</head>
+<body>
+
+
+    @await Html.PartialAsync("_navbar")
+
+
+
+    <main class="my-3">
+        <div class="container">
+
+            @if (TempData["message"] != null)
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-warning">
+                            @TempData["message"]
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @RenderBody()
+        </div>
+    </main>
+
+    <footer class="py-5 bg-dark text-white text-center">
+        Shop App
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    @RenderSection("Scripts", false)
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<IdentityRole>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>Role List</h1>
+        <hr />
+        <a href="/admin/role/create" class="btn btn-primary">Add Role</a> <br />
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td style="width : 30px;">Id</td>
+                    <td style="width : 60px">Role Name</td>
+                    <td></td>
+
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            
+                            <td>@item.Name</td>
+                            
+                            
+
+                            <td>
+                                <a href="/admin/role/edit/@item.Id" class="btn btn-primary btn-sm mr-2">Edit</a>
+
+                                <form style="display : inline;" method="post" asp-controller="Admin" asp-action="DeleteRole">
+                                    <input type="hidden" name="RoleId" value="@item.Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+
+
+
+                            </td>
+
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td class="alert alert-warning" colspan="5">
+                            <h3>No Roles</h3>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
